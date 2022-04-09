@@ -161,3 +161,41 @@ const inventory = [
     sold: 8,
   },
 ];
+
+//1a
+// Maak een variabele om de namen in op te slaan
+// schrijf de code om de namen uit de objecten te halen
+const inventoryNames = inventory.map((inventoryName) => {
+  return inventoryName.name
+});
+
+// console.log(inventoryNames);
+
+//1b
+// *maak een variabele om de verwachte uitkomst in op te slaan
+// schrijf de code die bij elk object de original stock vergelijkt met de verkochte stock
+const inventorySoldOut = inventory.filter((inventorySold) => {
+  return inventorySold.originalStock === inventorySold.sold
+})
+
+// console.log(inventorySoldOut)
+
+//1c
+// Maak een variabele om de verwachte uitkomst in op te slaan
+// schrijf de code die alle objecten met ambilight verzamelt
+
+const hasAmbilight = inventory.filter((optionAmbilight)=> {
+  return optionAmbilight.options.ambiLight === true
+})
+
+// console.log(hasAmbilight)
+
+//1d
+//Maak een variabele om de verwachte uitkomst in op te slaan
+//Schrijf de code die de objecten sorteert in prijs van laag naar hoog
+
+const inventoryByPrice = inventory.sort((a, b) => {
+  return a.price - b.price;
+})
+
+console.log(inventoryByPrice)
