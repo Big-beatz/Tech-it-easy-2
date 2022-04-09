@@ -195,7 +195,7 @@ const hasAmbilight = inventory.filter((optionAmbilight)=> {
 //Schrijf de code die de objecten sorteert in prijs van laag naar hoog
 
 const inventoryByPrice = inventory.sort((a, b) => {
-  return a.price - b.price;
+  return a.price - b.price
 })
 
 // console.log(inventoryByPrice)
@@ -205,10 +205,89 @@ const inventoryByPrice = inventory.sort((a, b) => {
 // Maak een variabele om het aantal verkochte tv's in op te slaan
 // Schrijf de code om het aantal verkochte tv's te berekenen
 
-let totalSold = 0;
+let totalSold = 0
 
 for (let i = 0; i < inventory.length; i++){
   totalSold += inventory[i].sold
 }
 
-console.log(totalSold)
+// console.log(totalSold)
+
+//2b
+//Maak het referentie element aan in HTML
+//koppel de uitkomst van totalSold aan dit element en implementeer het in de html
+//verander de kleur via css
+const verkocht = document.getElementById("verkocht")
+verkocht.textContent = totalSold
+
+//2c
+// Maak een variabele om de original stock in op te slaan
+// Schrijf de code om deze op te slaan
+
+let originalStock = 0
+
+for(let i = 0; i < inventory.length; i++){
+  originalStock += inventory[i].originalStock
+}
+
+// console.log(originalStock)
+
+// 2d
+// Maak het referentie element aan in html
+// koppel de uitkomst van originalStock aan dit element en implementeer dit in de html
+// verander de kleur in css
+
+const opgekocht = document.getElementById("opgekocht")
+opgekocht.textContent = originalStock
+
+// 2e
+// Maak een variabele om de het aantal verkochte tv's in op te slaan
+// Schrijf de code om dit uit te rekenen
+// Maak het referentie element aan in html
+// koppel de uitkomst van inStock aan dit element en implementeer dit in de html
+// verander de kleur in css
+
+let totalInStock = 0
+for (let i = 0; i < inventory.length; i++){
+  let lefInStock = inventory[i].originalStock - inventory[i].sold
+  totalInStock += lefInStock
+}
+
+const voorraad = document.getElementById("voorraad")
+voorraad.innerText = totalInStock
+
+//Opdracht 3
+// 3a
+//Maak een div om deze lijst in aan te maken
+// Gebruik een array map functie om alle merken te sorteren
+// Maak een loop die voor elke entry van de nieuwe array een <li> implementeert op de html pagina
+
+// const listOfBrands = inventory.map((brands) => {
+//   return brands.brand
+// })
+//
+// console.log(listOfBrands)
+// const merken = document.getElementById("merken")
+//
+// for (let i = 0; i < listOfBrands.length; i++){
+//   merken.innerHTML += `<li> ${listOfBrands[i]} </li>`
+// }
+
+//3b
+//Zet bovenstaande code in een overkoepelende functie
+function brandsToHTML(stocklist) {
+  const listOfBrands = inventory.map((brands) => {
+    return brands.brand
+  })
+
+  console.log(listOfBrands)
+  const merken = document.getElementById("merken")
+
+  for (let i = 0; i < listOfBrands.length; i++) {
+    merken.innerHTML += `<li> ${listOfBrands[i]} </li>`
+  }
+}
+
+brandsToHTML(inventory)
+
+//4

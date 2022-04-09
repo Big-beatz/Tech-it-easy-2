@@ -1,0 +1,13 @@
+body{
+    background-color: bisque;
+}
+
+#verkocht{color: #05a705;
+}
+#opgekocht{
+    color: blue;
+}
+
+#voorraad{
+    color: red;
+}
