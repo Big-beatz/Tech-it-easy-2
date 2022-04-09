@@ -198,4 +198,17 @@ const inventoryByPrice = inventory.sort((a, b) => {
   return a.price - b.price;
 })
 
-console.log(inventoryByPrice)
+// console.log(inventoryByPrice)
+
+//Opdracht 2
+//2a
+// Maak een variabele om het aantal verkochte tv's in op te slaan
+// Schrijf de code om het aantal verkochte tv's te berekenen
+
+let totalSold = 0;
+
+for (let i = 0; i < inventory.length; i++){
+  totalSold += inventory[i].sold
+}
+
+console.log(totalSold)
