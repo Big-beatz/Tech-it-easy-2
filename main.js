@@ -280,7 +280,7 @@ function brandsToHTML(stocklist) {
     return brands.brand
   })
 
-  console.log(listOfBrands)
+  // console.log(listOfBrands)
   const merken = document.getElementById("merken")
 
   for (let i = 0; i < listOfBrands.length; i++) {
@@ -288,6 +288,89 @@ function brandsToHTML(stocklist) {
   }
 }
 
-brandsToHTML(inventory)
+// brandsToHTML(inventory)
 
-//4
+//Opdracht 4
+// 4a
+// Creëer het element om de string aan te koppelen
+// Maak de functie aan
+// Sla de referentie naar de html op in een variabele
+// Maak een template string die de juiste elementen implementeerd
+
+// 4b
+//pas de innerHTML van de functie televisioninformation aan om de prijs ook toe te voegen
+
+function televisionInformation(stock){
+    return `${stock.brand} ${stock.type} - ${stock.name}
+      <br>
+       €${stock.price},-
+      <br>
+      `
+}
+
+//4c
+//schrijf een functie die de schermgroottes aanspreekt
+//maak een variabele voor de schermgrootte in INCH
+//maak een for loop die de array binnen een array kan aanspreken en per nummer kan omzettten tot cm
+//maak een string template waarbinnen de berekning van inch naar CM
+//maak een referentie HTML aan op deze te implementeren
+//kijk of de functie in de vorige functie kan worden geïmplementeerd
+// televisionInformation(inventory[0])
+
+function createScreenSizesArray(sizesArray){
+    let output = ''
+
+    for(let i = 0; i < sizesArray.length; i++){
+        const currentSizeInches = sizesArray[i]
+        const currentSizeCM = sizesArray[i] * 2.54
+
+        output = output + `${currentSizeInches} Inch (${currentSizeCM} cm)`
+
+        if (i < sizesArray.length - 1){
+            output = `${output} |`
+        }
+    }
+    return output
+}
+
+
+// createScreenSizesArray(inventory[0].availableSizes)
+
+
+//4d
+
+//     const television = document.getElementById("televisie")
+//     television.innerHTML = `<h3> ${televisionInformation(inventory[3])}</h3>
+//                             <p> ${createScreenSizesArray(inventory[3].availableSizes)} </p>`
+
+
+// 4e
+function displayAll(tvArray) {
+    const televisielijst = document.getElementById("televisielijst")
+
+    const modelItems = tvArray.map((tvObject) => {
+        return `<li>
+                <h3> ${televisionInformation(tvObject)}</h3>
+                <p> ${createScreenSizesArray(tvObject.availableSizes)}</p>
+                </li>`
+    })
+
+televisielijst.innerHTML = modelItems
+}
+
+// displayAll(inventory)
+
+// bonusopdracht
+
+const sortByPriceButton = document.getElementById("sortByPrice")
+sortByPriceButton.addEventListener('click', () => {
+    displayAll(inventoryByPrice);
+})
+const Ambilight = document.getElementById("ambilight")
+Ambilight.addEventListener('click', () =>{
+    displayAll(hasAmbilight)
+})
+const soldOut = document.getElementById("uitverkocht")
+soldOut.addEventListener('click', () =>{
+    displayAll(inventorySoldOut)
+})
